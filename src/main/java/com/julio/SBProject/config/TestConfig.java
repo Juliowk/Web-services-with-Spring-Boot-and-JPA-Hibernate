@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.julio.SBProject.entites.Category;
 import com.julio.SBProject.entites.Order;
 import com.julio.SBProject.entites.OrderItem;
+import com.julio.SBProject.entites.Payment;
 import com.julio.SBProject.entites.Product;
 import com.julio.SBProject.entites.User;
 import com.julio.SBProject.entites.enums.OrderStatus;
@@ -78,7 +79,10 @@ public class TestConfig implements CommandLineRunner {
 		
 		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 		
-
+		Payment pay1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
+		o1.setPayment(pay1);
+		
+		orderRepository.save(o1);
 	}
 
 }
